@@ -19,6 +19,7 @@ function readTextFile(file, callback) {
 }
 var data = {}
 var setup = {}
+var student = {}
 //usage:
 readTextFile("./position.json", function (text) {
     data = JSON.parse(text);
@@ -51,6 +52,7 @@ const loader = new GLTFLoader();
 //     console.log(glb);
 //     scene.add(glb.scene);
 // });
+
 readTextFile("./setup.json", function (text) {
     setup = JSON.parse(text);
     console.log("setup", setup);
@@ -97,11 +99,11 @@ readTextFile("./setup.json", function (text) {
         model.position.set(setup[4].x, setup[4].y, setup[4].z);
         scene.add(model);
     });
-    loader.load('./assets/Student.glb', function (glb) {
-        const model = glb.scene.children[0];
-        model.scale.set(0.009, 0.009, 0.009);
-        scene.add(model);
-    });
+    // loader.load('./assets/Student.glb', function (glb) {
+    //     const model = glb.scene.children[0];
+    //     model.scale.set(0.009, 0.009, 0.009);
+    //     scene.add(model);
+    // });
 
     loader.load('./assets/studentTable.glb', function (glb) {
         console.log("stdentChair", glb);
@@ -128,6 +130,24 @@ readTextFile("./setup.json", function (text) {
         model.position.set(setup[5].x, setup[5].y, setup[5].z + 1);
         scene.add(model);
     });
+});
+
+
+readTextFile("./student.json", function (text) {
+    student = JSON.parse(text);
+    console.log("student Length", Object.keys(student).length);
+    for (var i = 0; i < Object.keys(student).length; i++) {
+        console.log("student", student[i].x);
+        var count = 0;
+        loader.load('./assets/Student.glb', function (glb) {
+            console.log("student X", student[count].x);
+            const model = glb.scene.children[0];
+            model.scale.set(0.009, 0.009, 0.009);
+            model.position.set(student[count].x, student[count].y, student[count].z);
+            scene.add(model);
+            count++;
+        });
+    }
 });
 
 
