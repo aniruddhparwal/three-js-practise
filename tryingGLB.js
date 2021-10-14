@@ -81,30 +81,65 @@ readTextFile("./setup.json", function (text) {
         model.position.set(setup[3].x, setup[3].y, setup[3].z);
         scene.add(model);
     });
+
+
+    loader.load('./assets/Board.glb', function (glb) {
+        console.log(glb);
+        const model = glb.scene.children[0];
+        model.position.set(setup[6].x, setup[6].y, setup[6].z);
+        scene.add(model);
+    });
+
     loader.load('./assets/tableChair.glb', function (glb) {
         console.log(glb);
         const model = glb.scene.children[0];
+        // model.scale.set(0.009, 0.009, 0.009);
         model.position.set(setup[4].x, setup[4].y, setup[4].z);
         scene.add(model);
     });
+    loader.load('./assets/Student.glb', function (glb) {
+        const model = glb.scene.children[0];
+        model.scale.set(0.009, 0.009, 0.009);
+        scene.add(model);
+    });
+
     loader.load('./assets/studentTable.glb', function (glb) {
         console.log("stdentChair", glb);
         const model = glb.scene.children[0];
         model.position.set(setup[5].x, setup[5].y, setup[5].z);
         scene.add(model);
     });
+
+    loader.load('./assets/studentTable.glb', function (glb) {
+        console.log("stdentChair", glb);
+        const model = glb.scene.children[0];
+        model.position.set(setup[5].x + 2, setup[5].y, setup[5].z);
+        scene.add(model);
+    });
+    loader.load('./assets/studentTable.glb', function (glb) {
+        console.log("stdentChair", glb);
+        const model = glb.scene.children[0];
+        model.position.set(setup[5].x + 2, setup[5].y, setup[5].z + 1);
+        scene.add(model);
+    });
+    loader.load('./assets/studentTable.glb', function (glb) {
+        console.log("stdentChair", glb);
+        const model = glb.scene.children[0];
+        model.position.set(setup[5].x, setup[5].y, setup[5].z + 1);
+        scene.add(model);
+    });
 });
 
 
-loader.load('./assets/teacher.glb', function (glb) {
-    console.log(glb);
-    const model = glb.scene.children[0];
-    model.position.set(0, 0, 0);
-    model.name = "teacher";
-    scene.add(model);
-    // scene.add(glb.scene);
-    // glb.scene.position.set(0, 20, 25);
-});
+// loader.load('./assets/teacher.glb', function (glb) {
+//     console.log(glb);
+//     const model = glb.scene.children[0];
+//     model.position.set(0, 0, 0);
+//     model.name = "teacher";
+//     scene.add(model);
+//     // scene.add(glb.scene);
+//     // glb.scene.position.set(0, 20, 25);
+// });
 
 //read data from json file and store it in an array
 // const data = require('./position.json');
@@ -134,10 +169,10 @@ selectMenu.addEventListener("change", function () {
 // scene.add(new THREE.AxesHelper(20));
 // scene.add(mesh4);
 
-var light = new THREE.PointLight(0xFFFFFF, 1, 500);
+var light = new THREE.AmbientLight(0xFFFFFF, 1, 500);
 light.position.set(10, 0, 25);
 scene.add(light);
-var light2 = new THREE.PointLight(0xFFFFFF, 1, 500);
+var light2 = new THREE.AmbientLight(0xFFFFFF, 1, 500);
 light2.position.set(0, 20, 25);
 scene.add(light2);
 var render = function () {
