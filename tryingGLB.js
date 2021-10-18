@@ -73,7 +73,7 @@ readTextFile("./setup.json", function (text) {
     loader.load('./assets/base.glb', function (glb) {
         console.log(glb);
         const model = glb.scene.children[0];
-        model.position.set(setup[2].x, setup[2].y, setup[2].z);
+        model.position.set(setup[2].x, setup[2].y, setup[2].z + 0.05);
         scene.add(model);
     });
 
@@ -81,6 +81,13 @@ readTextFile("./setup.json", function (text) {
         console.log(glb);
         const model = glb.scene.children[0];
         model.position.set(setup[3].x, setup[3].y, setup[3].z);
+        scene.add(model);
+    });
+
+    loader.load('./assets/Back.glb', function (glb) {
+        console.log(glb);
+        const model = glb.scene.children[0];
+        model.position.set(setup[3].x, setup[3].y, setup[3].z + 3.4);
         scene.add(model);
     });
 
@@ -143,8 +150,8 @@ readTextFile("./student.json", function (text) {
             console.log("student X", student[count].x);
             const model = glb.scene.children[0];
             model.scale.set(0.009, 0.009, 0.009);
-            model.position.set(student[count].x, student[count].y, student[count].z);
-            model.rotation.z = 3.3;
+            model.position.set(student[count]["t"].x, student[count]["t"].y, student[count]["t"].z);
+            model.rotation.set(student[count]["r"].x - 1.5, student[count]["r"].y, student[count]["r"].z + 3.3);
             scene.add(model);
             count++;
         });
