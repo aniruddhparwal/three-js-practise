@@ -144,6 +144,7 @@ readTextFile("./student.json", function (text) {
             const model = glb.scene.children[0];
             model.scale.set(0.009, 0.009, 0.009);
             model.position.set(student[count].x, student[count].y, student[count].z);
+            model.rotation.z = 3.3;
             scene.add(model);
             count++;
         });
@@ -174,7 +175,8 @@ selectMenu.addEventListener("change", function () {
         //remove the previous model
         scene.remove(scene.children[-1]);
         const model = glb.scene.children[0];
-        model.position.set(data[selectMenu.value].x, data[selectMenu.value].y, data[selectMenu.value].z);
+        model.position.set(data[selectMenu.value]["t"].x, data[selectMenu.value]["t"].y, data[selectMenu.value]["t"].z);
+        model.rotation.set(data[selectMenu.value]["r"].x - 1.7, data[selectMenu.value]["r"].y, data[selectMenu.value]["r"].z);
         // scene.updateMatrix(model);
         model.name = "teacher";
 
