@@ -20,6 +20,16 @@ function readTextFile(file, callback) {
 var data = {}
 var setup = {}
 var student = {}
+var forward = 0;
+var left = 0;
+
+//event listeners to get id forrwards and backwards
+
+
+
+
+
+
 //usage:
 readTextFile("./position.json", function (text) {
     data = JSON.parse(text);
@@ -139,6 +149,16 @@ readTextFile("./setup.json", function (text) {
     // });
 });
 
+loader.load('./assets/teacher.glb', function (glb) {
+    scene.remove(scene.children[-1]);
+    const model = glb.scene.children[0];
+    model.position.set(0, 0, 0);
+    model.rotation.set(-1.7, 0, 0);
+    // scene.updateMatrix(model);
+    model.name = "teacher";
+
+    scene.add(model);
+});
 
 readTextFile("./student.json", function (text) {
     student = JSON.parse(text);
@@ -173,25 +193,55 @@ readTextFile("./student.json", function (text) {
 // const data = require('./position.json');
 // console.log(data);
 
-var selectMenu = document.getElementById("modelSelect");
-selectMenu.addEventListener("change", function () {
+// var selectMenu = document.getElementById("modelSelect");
+// selectMenu.addEventListener("change", function () {
+//     loader.load('./assets/teacher.glb', function (glb) {
+//         var selectedObject = scene.getObjectByName('teacher');
+//         scene.remove(selectedObject);
+//         // console.log(glb);
+//         //remove the previous model
+//         scene.remove(scene.children[-1]);
+//         const model = glb.scene.children[0];
+//         model.position.set(data[selectMenu.value]["t"].x, data[selectMenu.value]["t"].y, data[selectMenu.value]["t"].z);
+//         model.rotation.set(data[selectMenu.value]["r"].x - 1.7, data[selectMenu.value]["r"].y, data[selectMenu.value]["r"].z);
+//         // scene.updateMatrix(model);
+//         model.name = "teacher";
+
+//         scene.add(model);
+//         // glb.scene.position.set(0, 20, 25);
+//     });
+// });
+
+document.addEventListener('keydown', function (event) {
+    if (event.key == 'w') {
+        left = left - 0.1;
+    }
+    if (event.key == 's') {
+        left = left + 0.1;
+    }
+    if (event.key == 'a') {
+        forward = forward - 0.1;
+    }
+    if (event.key == 'd') {
+        forward = forward + 0.1;
+    }
+
+    console.log(event.key);
+
     loader.load('./assets/teacher.glb', function (glb) {
         var selectedObject = scene.getObjectByName('teacher');
         scene.remove(selectedObject);
-        // console.log(glb);
-        //remove the previous model
-        scene.remove(scene.children[-1]);
         const model = glb.scene.children[0];
-        model.position.set(data[selectMenu.value]["t"].x, data[selectMenu.value]["t"].y, data[selectMenu.value]["t"].z);
-        model.rotation.set(data[selectMenu.value]["r"].x - 1.7, data[selectMenu.value]["r"].y, data[selectMenu.value]["r"].z);
+        model.position.set(forward, 0, left);
+        model.rotation.set(-1.7, 0, 0);
         // scene.updateMatrix(model);
         model.name = "teacher";
 
         scene.add(model);
-        // glb.scene.position.set(0, 20, 25);
     });
-});
 
+
+})
 
 
 
