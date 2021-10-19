@@ -23,6 +23,7 @@ var student = {}
 var forward = 0;
 var left = 0;
 
+var lookRight = 0;
 //event listeners to get id forrwards and backwards
 
 
@@ -226,6 +227,19 @@ document.addEventListener('keydown', function (event) {
         forward = forward + 0.1;
     }
 
+    // if (event.key == 'ArrowUp') {
+    //     left = left - 0.1;
+    // }
+    // if (event.key == 'ArrowDown') {
+    //     left = left + 0.1;
+    // }
+    if (event.key == 'ArrowLeft') {
+        lookRight = lookRight + 0.1;
+    }
+    if (event.key == 'ArrowRight') {
+        lookRight = lookRight - 0.1;
+    }
+
     console.log(event.key);
 
     loader.load('./assets/teacher.glb', function (glb) {
@@ -233,7 +247,7 @@ document.addEventListener('keydown', function (event) {
         scene.remove(selectedObject);
         const model = glb.scene.children[0];
         model.position.set(forward, 0, left);
-        model.rotation.set(-1.7, 0, 0);
+        model.rotation.set(-1.7, 0, lookRight);
         // scene.updateMatrix(model);
         model.name = "teacher";
 
