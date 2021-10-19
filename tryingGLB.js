@@ -112,31 +112,31 @@ readTextFile("./setup.json", function (text) {
     //     scene.add(model);
     // });
 
-    loader.load('./assets/studentTable.glb', function (glb) {
-        console.log("stdentChair", glb);
-        const model = glb.scene.children[0];
-        model.position.set(setup[5].x, setup[5].y, setup[5].z);
-        scene.add(model);
-    });
+    // loader.load('./assets/studentTable.glb', function (glb) {
+    //     console.log("stdentChair", glb);
+    //     const model = glb.scene.children[0];
+    //     model.position.set(setup[5].x, setup[5].y, setup[5].z);
+    //     scene.add(model);
+    // });
 
-    loader.load('./assets/studentTable.glb', function (glb) {
-        console.log("stdentChair", glb);
-        const model = glb.scene.children[0];
-        model.position.set(setup[5].x + 2, setup[5].y, setup[5].z);
-        scene.add(model);
-    });
-    loader.load('./assets/studentTable.glb', function (glb) {
-        console.log("stdentChair", glb);
-        const model = glb.scene.children[0];
-        model.position.set(setup[5].x + 2, setup[5].y, setup[5].z + 1);
-        scene.add(model);
-    });
-    loader.load('./assets/studentTable.glb', function (glb) {
-        console.log("stdentChair", glb);
-        const model = glb.scene.children[0];
-        model.position.set(setup[5].x, setup[5].y, setup[5].z + 1);
-        scene.add(model);
-    });
+    // loader.load('./assets/studentTable.glb', function (glb) {
+    //     console.log("stdentChair", glb);
+    //     const model = glb.scene.children[0];
+    //     model.position.set(setup[5].x + 2, setup[5].y, setup[5].z);
+    //     scene.add(model);
+    // });
+    // loader.load('./assets/studentTable.glb', function (glb) {
+    //     console.log("stdentChair", glb);
+    //     const model = glb.scene.children[0];
+    //     model.position.set(setup[5].x + 2, setup[5].y, setup[5].z + 1);
+    //     scene.add(model);
+    // });
+    // loader.load('./assets/studentTable.glb', function (glb) {
+    //     console.log("stdentChair", glb);
+    //     const model = glb.scene.children[0];
+    //     model.position.set(setup[5].x, setup[5].y, setup[5].z + 1);
+    //     scene.add(model);
+    // });
 });
 
 
