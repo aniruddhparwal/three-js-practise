@@ -1,5 +1,6 @@
 import * as THREE from "./three.js-master/build/three.module.js";
-import { OrbitControls } from "https://threejs.org/examples/jsm/controls/OrbitControls.js"
+// import { OrbitControls } from "https://threejs.org/examples/jsm/controls/OrbitControls.js"
+import { OrbitControls } from "./three.js-master/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "./three.js-master/examples/jsm/loaders/GLTFLoader.js"
 // import * as data from './position.json';
 
@@ -31,7 +32,7 @@ var lookRight = 0;
 
 
 
-//usage:
+// function to read the json file
 readTextFile("./position.json", function (text) {
     data = JSON.parse(text);
     console.log("data", data);
@@ -59,11 +60,8 @@ var controls = new OrbitControls(camera, renderer.domElement);
 controls.update();
 
 const loader = new GLTFLoader();
-// loader.load('./assets/OnlyClassroom.glb', function (glb) {
-//     console.log(glb);
-//     scene.add(glb.scene);
-// });
 
+//function to read the setup json data
 readTextFile("./setup.json", function (text) {
     setup = JSON.parse(text);
     console.log("setup", setup);
@@ -150,6 +148,7 @@ readTextFile("./setup.json", function (text) {
     // });
 });
 
+//setting up the teacher
 loader.load('./assets/teacher.glb', function (glb) {
     scene.remove(scene.children[-1]);
     const model = glb.scene.children[0];
@@ -161,6 +160,8 @@ loader.load('./assets/teacher.glb', function (glb) {
     scene.add(model);
 });
 
+
+//reading student data from json file
 readTextFile("./student.json", function (text) {
     student = JSON.parse(text);
     console.log("student Length", Object.keys(student).length);
@@ -213,6 +214,8 @@ readTextFile("./student.json", function (text) {
 //     });
 // });
 
+
+//joystick controller code
 document.addEventListener('keydown', function (event) {
     if (event.key == 'w') {
         left = left - 0.1;
@@ -262,6 +265,8 @@ document.addEventListener('keydown', function (event) {
 // scene.add(new THREE.AxesHelper(20));
 // scene.add(mesh4);
 
+
+//setting up the light
 var light = new THREE.AmbientLight(0xFFFFFF, 1, 500);
 light.position.set(10, 0, 25);
 scene.add(light);
